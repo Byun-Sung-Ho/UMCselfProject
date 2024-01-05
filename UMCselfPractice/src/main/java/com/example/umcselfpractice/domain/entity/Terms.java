@@ -1,15 +1,15 @@
 package com.example.umcselfpractice.domain.entity;
 
 import com.example.umcselfpractice.domain.common.baseEntity;
+import com.example.umcselfpractice.domain.mapping.MemberAgree;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +26,7 @@ public class Terms extends baseEntity {
     private String body;
 
     private Boolean optional;
+
+    @OneToMany(mappedBy = "terms", cascade = CascadeType.ALL)
+    private List<MemberAgree> memberAgreeList = new ArrayList<>();
 }
