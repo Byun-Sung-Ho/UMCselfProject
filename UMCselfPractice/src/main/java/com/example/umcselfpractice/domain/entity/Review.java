@@ -1,10 +1,7 @@
 package com.example.umcselfpractice.domain.entity;
 
 import com.example.umcselfpractice.domain.common.baseEntity;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class Review extends baseEntity {
 
     @Id
@@ -21,6 +19,8 @@ public class Review extends baseEntity {
     private String title;
 
     private Float score;
+
+    private String body;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
